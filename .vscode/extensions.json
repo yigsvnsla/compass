@@ -1,0 +1,25 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
+  "recommendations": [
+    "ionic.ionic",
+    "angular.ng-template",
+    "christian-kohler.path-intellisense",
+    "christian-kohler.npm-intellisense",
+    "pkief.material-icon-theme",
+    "visualstudioexptteam.vscodeintellicode-completions",
+    "visualstudioexptteam.intellicode-api-usage-examples",
+    "visualstudioexptteam.vscodeintellicode",
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+    "mhutchie.git-graph",
+    "editorconfig.editorconfig",
+    "aaron-bond.better-comments",
+    "formulahendry.auto-rename-tag",
+    "steoates.autoimport",
+    "formulahendry.auto-close-tag",
+    "johnpapa.angular2",
+    "cyrilletuzi.angular-schematics",
+    "mikestead.dotenv",
+    "rangav.vscode-thunder-client",
+  ]
+}

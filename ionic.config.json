@@ -1,0 +1,14 @@
+
+{
+  "defaultProject": "app-compass",
+  "projects": {
+    "app-compass": {
+      "name": "app-compass",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular-standalone",
+      "root": "projects/app-compass"
+    }
+  }
+}
