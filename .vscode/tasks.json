@@ -4,7 +4,25 @@
   "tasks": [
     {
       "type": "npm",
-      "script": "start",
+      "script": "start:web-compass",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
+        }
+      }
+    },
+    {
+      "type": "npm",
+      "script": "start:app-compass",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",

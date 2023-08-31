@@ -47,6 +47,9 @@ dependencies:
   '@ionic/angular':
     specifier: 7.3.1
     version: 7.3.1(@angular/core@16.2.0)(@angular/forms@16.2.0)(@angular/router@16.2.0)(rxjs@7.8.0)(zone.js@0.13.0)
+  '@jcesarmobile/ssl-skip':
+    specifier: 0.2.0
+    version: 0.2.0
   ionicons:
     specifier: ^7.0.0
     version: 7.1.0
@@ -2172,6 +2175,10 @@ packages:
     resolution: {integrity: sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==}
     engines: {node: '>=8'}
     dev: true
+
+  /@jcesarmobile/ssl-skip@0.2.0:
+    resolution: {integrity: sha512-hkhOM5+qPm5xzOYcbUODzYTZKyATEM3qixzUL1gJsJckZ5wAUQxyZJFM3hcUANv8fV8cONfX7A+d/DJpzVvM+Q==}
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}

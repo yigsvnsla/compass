@@ -3,11 +3,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
+      "name": "web-compass",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "preLaunchTask": "npm: start:web-compass",
+      "url": "http://localhost:8200/"
+    },
+    {
+      "name": "app-compass",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start:app-compass",
+      "url": "http://localhost:8100/"
     },
     {
       "name": "ng test",
