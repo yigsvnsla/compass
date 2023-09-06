@@ -122,8 +122,6 @@ export class DashboardComponent {
           intersect: false,
           mode: 'nearest',
         },
-        responsive: true,
-        maintainAspectRatio: true,
       },
     })
   }
