@@ -11,6 +11,11 @@ import 'chartjs-adapter-date-fns';
 })
 export class DashboardComponent {
 
+
+  public readonly circumference: number = (50 * 2 * Math.PI);
+  public readonly percent: number = 80;
+  public readonly strokeCircumference: number = this.circumference - this.percent / 100 * this.circumference;
+
   private renderer2: Renderer2 = inject(Renderer2)
 
   public _charts: Chart | undefined;
@@ -139,3 +144,5 @@ const formatThousands = (value: any) => Intl.NumberFormat('en-US', {
   maximumSignificantDigits: 3,
   notation: 'compact',
 }).format(value);
+
+
