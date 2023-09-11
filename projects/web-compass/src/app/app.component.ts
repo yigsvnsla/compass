@@ -7,7 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 @Component({
   selector: 'web-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DrawerMenuComponent, NavbarComponent],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
