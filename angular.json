@@ -4,7 +4,10 @@
   "newProjectRoot": ".",
   "cli": {
     "analytics": false,
-    "packageManager": "pnpm"
+    "packageManager": "pnpm",
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   },
   "projects": {
     "web-compass": {
