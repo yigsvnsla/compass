@@ -1,4 +1,4 @@
-<div class="bg-gray-800 p-8 sm:max-w-xl shadow-sm rounded-lg mx-auto">
+<div id="ref" class="bg-gray-800 p-8 sm:max-w-xl shadow-sm rounded-lg mx-auto">
   <!-- branding -->
   <a href="#" class="dark:text-white text-gray-900 font-semibold text-xl items-center inline-flex mb-4">
     <img class="w-8 h-8 mr-2" src="../../../assets/svg/compass-icon.svg" alt="">
@@ -19,13 +19,13 @@
         <label class="label">
           <span class="label-text">Enter account</span>
         </label>
-        <input [ngClass]="{'input-error': true} " type="email" formControlName="username" placeholder="Username" class="input input-bordered input-ghost w-full " />
+        <input (change)="this.fix($event)" [ngClass]="this.formControlUsernameStyleState" type="email" formControlName="username" placeholder="Username" class="input input-bordered input-ghost w-full focus:outline-none" />
       </div>
       <div class="form-control">
         <label class="label">
           <span class="label-text">Enter password</span>
         </label>
-        <input type="password" formControlName="password" placeholder="••••••••" class="input input-bordered input-ghost w-full " />
+        <input [ngClass]="this.formControlPasswordStyleState" type="password" formControlName="password" placeholder="••••••••" class="input input-bordered input-ghost w-full focus:outline-none" />
       </div>
     </div>
     <div class="divider">or</div>
