@@ -7,7 +7,7 @@ import { metaReducers, reducers } from './core/store';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { UrlPatcherInterceptor } from './core/middlewares/url-patcher.interceptor';
 import { provideEffects } from '@ngrx/effects';
-import * as effects from './core/store/effects/indext';
+import * as effects from './core/store/effects/index';
 import { AuthTokenInterceptor } from './core/middlewares/auth-token.interceptor';
 
 export const appConfig: ApplicationConfig = {

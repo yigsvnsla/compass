@@ -3,8 +3,6 @@ import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthService } from '../../services/auth.service';
 import { AuthActions, AuthApiActions } from '../actions/auth.actions';
-console.log('dasdas');
-
 export const LoadAuthEffect = createEffect(
   (
     actions$ = inject(Actions),
