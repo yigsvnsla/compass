@@ -111,28 +111,21 @@ export class HttpController {
   }
 
   /**
-   * The function returns the apiPath URL based on the values provided in the API_ENV object.
-   * @returns The `apiPath` being returned is a string that concatenates various API_ENV variables
-   * to form a URL.
-  */
+   * The function `apiPath` returns a string that concatenates the `DATA_SOURCE`,
+   * `API_ENV['apiVersion']`, and `API_ENV['prefix']` values.
+   * @param {DATA_SOURCE} DATA_SOURCE - The `DATA_SOURCE` parameter is a variable that represents the
+   * source of the data for the API. It could be a URL, a file path, or any other source of data.
+   * @returns a string.
+   */
   private apiPath(DATA_SOURCE: DATA_SOURCE): string {
-    const url =
-      `${API_ENV['protocol']}://` +
-      `${API_ENV['subDomain'] ? API_ENV['subDomain'] + '.' : ''}` +
-      `${API_ENV['domain']}:` +
-      `${API_ENV['port']}/` +
-      `${API_ENV['gateway'] ? API_ENV['gateway'] + '/' : ''}` +
-      `${DATA_SOURCE}/` +
-      `${API_ENV['apiVersion']}/` +
-      `${API_ENV['prefix']}/`
-      // + `${API_ENV['service']}`
-    return url.trim()
+    return `${API_ENV['prefix']}/${API_ENV['apiVersion']}/${DATA_SOURCE}`.trim()
   }
 
   /**
-   * The function returns a HttpHeaders object with the 'Authorization' and 'Content-Type' headers set.
+   * The function returns an instance of HttpHeaders with the 'Authorization' and 'Content-Type' headers
+   * set.
    * @returns The method is returning an instance of the HttpHeaders class.
-  */
+   */
   private get headers(): HttpHeaders {
     return new HttpHeaders({
       'Authorization': `${localStorage.getItem('accessToken')}`,
@@ -140,20 +133,12 @@ export class HttpController {
     })
   }
 
-
-  /**
-   * The `auth` function sends a POST request to a specified API endpoint with the provided request
-   * body, headers, and query parameters, and returns an Observable of the API response.
-   * @param httpControllerArgs - The `httpControllerArgs` parameter is an object of type
-   * `HttpControllerArg<RequestType>`. It contains the following properties:
-   * @returns an Observable of type ApiResponse<ResponseType>.
-   */
-  public auth<RequestType, ResponseType>(httpControllerArgs: HttpControllerArg<RequestType>): Observable<ApiResponse<ResponseType>> {
+  /* The `auth` function is used to send an HTTP POST request with form data to a specified API endpoint. */
+  public auth<RequestType, ResponseType>(httpControllerArgs: Omit<HttpControllerArg<RequestType>, 'queryParams' | 'pagination'>): Observable<ApiResponse<ResponseType>> {
     return this._HttpClient
-      .post<ApiResponse<ResponseType>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`, httpControllerArgs.body,
+      .post<ApiResponse<ResponseType>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`, new HttpParams({ fromObject: { ...httpControllerArgs.body } }),
         {
-          headers: new HttpHeaders({ 'Content-Type': 'x-www-form-urlencoded' }),
-          params: new HttpParams({ fromObject: { ...httpControllerArgs.pagination, ...httpControllerArgs.queryParams } }),
+          headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }),
           responseType: "json"
         }
       )
@@ -161,6 +146,5 @@ export class HttpController {
         catchError(this.errorHandler),
       );
   };
-
 
 }

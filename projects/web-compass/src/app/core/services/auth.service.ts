@@ -1,11 +1,12 @@
 import { AUTH_CLIENT_ENV } from './../env/enviroment';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { HttpController } from './http-controllers.service';
 import { AuthCredentials, AuthSignined } from '../interfaces/auth.interface';
 import { DATA_SOURCE } from '../enums/data-source.enum';
+import { BehaviorSubject, Observable, map, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'platform'
+  providedIn: 'root'
 })
 export class AuthService {
 
@@ -15,8 +16,16 @@ export class AuthService {
     return this._httpController.auth<AuthCredentials, AuthSignined>({
       datasource: DATA_SOURCE.AUTH,
       path: `oauth2/access_token`,
-      queryParams: { password, username, ...AUTH_CLIENT_ENV }
+      body: { password, username, ...AUTH_CLIENT_ENV }
     });
   };
+
+  public session() {
+    // return this._httpController.auth<AuthCredentials, AuthSignined>({
+    //   datasource: DATA_SOURCE.AUTH,
+    //   path: `oauth2/access_token`,
+    //   body: { password, username, ...AUTH_CLIENT_ENV }
+    // });
+  }
 
 };

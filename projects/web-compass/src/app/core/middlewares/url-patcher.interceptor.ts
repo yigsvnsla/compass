@@ -1,18 +1,11 @@
-import { Injectable } from '@angular/core';
 import {
   HttpRequest,
-  HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpHandlerFn
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_URL } from '../env/enviroment';
 
-@Injectable()
-export class UrlPatcherInterceptor implements HttpInterceptor {
-
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // request = request.clone({ url: `${enviroment.API_URL}${enviroment.API_SUBFIX}${request.url}` });
-    console.log('new request: ', request);
-    return next.handle(request);
-  }
-}
+export function UrlPatcherInterceptor(request: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
+  return next(request.clone({ url: `${API_URL}${request.url}` }));
+};

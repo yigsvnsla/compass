@@ -17,7 +17,6 @@ export interface ApiResponse<T> {
     code: number
   }
 }
-
 export interface HttpControllerArg<T> {
   datasource: DATA_SOURCE;
   path: string;

@@ -1,11 +1,18 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { StateUser } from '../reducers/user.reducer';
+import { StateAuth } from '../states/auth.state';
+import { AuthCredentials, AuthSignined } from '../../interfaces/auth.interface';
 
 export const AuthActions = createActionGroup({
-  source: '[Auth]',
+  source: 'Auth',
   events: {
-    'Load User': props<StateUser>(),
-    'Load User Success': props<StateUser>(),
-    'Load User Failure': props<{ error: unknown }>(),
+    'Load': props<AuthCredentials>(),
+  }
+});
+
+export const AuthApiActions = createActionGroup({
+  source: 'Auth API',
+  events: {
+    'Load Success': props<AuthSignined & AuthCredentials>(),
+    'Load Failure': props<{ error: unknown }>(),
   }
 });

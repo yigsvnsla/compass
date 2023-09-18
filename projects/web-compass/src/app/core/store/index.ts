@@ -1,21 +1,14 @@
 import { isDevMode } from '@angular/core';
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
-} from '@ngrx/store';
-import { reducerUser, StateUser } from './reducers/user.reducer';
+import { ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { StateAuth } from './states/auth.state';
+import { ReducerAuth } from './reducers/auth.reducer';
 
 export interface StateWebCompass {
-  User: StateUser
+  ReducerAuth: StateAuth
 }
 
 export const reducers: ActionReducerMap<StateWebCompass> = {
-  User: reducerUser,
-
+  ReducerAuth: ReducerAuth
 };
-
 
 export const metaReducers: MetaReducer<StateWebCompass>[] = isDevMode() ? [] : [];

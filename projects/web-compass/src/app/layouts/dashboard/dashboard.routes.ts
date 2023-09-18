@@ -5,6 +5,7 @@ export const routesDashboard: Routes = [
     path: '',
     pathMatch:'full',
     loadComponent: () => import('./dashboard.component').then(c => c.DashboardComponent),
+    data:{},
     children:[
       {
         path:'',

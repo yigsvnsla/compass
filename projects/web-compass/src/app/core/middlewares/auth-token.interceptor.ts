@@ -1,35 +1,19 @@
-import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { enviroment } from 'src/env/env';
-import { selectorUserToken } from '../store/selectors/auth.selectors';
-import { RootState } from '../store/states/root.state';
+import { selectAuthToken } from '../store/selectors/auth.selectors';
+import { StateWebCompass } from '../store';
+import { API_URL } from '../env/enviroment';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthTokenInterceptor {
-  private store: Store<RootState> = inject(Store<RootState>)
-
-
-  private isThirdPartyRequest(url: string): boolean {
-    return url.startsWith(enviroment.API_URL) === false
-  }
-
-  public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    let userToken: string = '';
-    this.store.select(selectorUserToken).subscribe(token => userToken = token).unsubscribe();
-    console.log(!userToken || this.isThirdPartyRequest(req.url));
-    if (!userToken || this.isThirdPartyRequest(req.url)) return next.handle(req);
-
-    const requestWhithHeader = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${userToken}`,
-      }
-    })
-    return next.handle(requestWhithHeader);
-  }
-
-}
+export function AuthTokenInterceptor(request: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
+  const store: Store<StateWebCompass> = inject(Store<StateWebCompass>)
+  const token = store.selectSignal(selectAuthToken)
+  if (!token() || (request.url.startsWith(API_URL) === false)) return next(request);
+  const requestWhithHeader = request.clone({
+    setHeaders: {
+      Authorization: `Bearer ${token}`,
+    }
+  })
+  return next(requestWhithHeader);
+};

@@ -1,8 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
-import { CommonModule, NgClass } from '@angular/common';
-
+import { NgClass, NgIf } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { StateWebCompass } from '../../core/store';
+import { AuthActions } from '../../core/store/actions/auth.actions';
+import { selectAuthIsLoading } from '../../core/store/selectors/auth.selectors';
 @Component({
   selector: 'web-sign-in-card',
   templateUrl: './sign-in-card.component.html',
@@ -10,7 +13,8 @@ import { CommonModule, NgClass } from '@angular/common';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgClass
+    NgClass,
+    NgIf
   ],
   providers: [
     AuthService,
@@ -18,38 +22,34 @@ import { CommonModule, NgClass } from '@angular/common';
 })
 export class SignInCardComponent {
 
+  private store: Store<StateWebCompass> = inject(Store<StateWebCompass>);
+
+
+  public isLoading = this.store.selectSignal(selectAuthIsLoading)
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+
+  }
+
   private formBuilder: FormBuilder = inject(FormBuilder);
   private _authService: AuthService = inject(AuthService);
 
   public formSignIn = this.formBuilder.nonNullable.group({
-    username: [{ value: '', disabled: false }, []],
-    password: [{ value: '', disabled: false }, []]
+    username: [{ value: '', disabled: false }, [Validators.required]],
+    password: [{ value: '', disabled: false }, [Validators.required]]
   });
 
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-
-  }
-
-  ngAfterContentInit(): void {
-    //Called after ngOnInit when the component's or directive's content has been initialized.
-    //Add 'implements AfterContentInit' to the class.
-    // console.log('ContentInit', this.formSignIn.getRawValue());
-  }
-
-  public fix($Event: Event) {
-    console.log($Event);
-
-    console.log(this.formSignIn.getRawValue());
-
-  }
-
   public onSubmit(): void {
-    console.info(this.formSignIn.getRawValue())
+    // this.isLoading.update((loading) => !loading)
+    this.store.dispatch(AuthActions.load(this.formSignIn.getRawValue()))
     // this._authService
     //   .singIn(this.formSignIn.getRawValue())
-    //   .subscribe()
+    //   .subscribe({
+    //     // error: () => this.isLoading.update((loading) => !loading),
+    //     // complete: () => this.isLoading.update((loading) => !loading)
+    //   })
   }
 
   public get formControlUsername(): FormControl<string> {
