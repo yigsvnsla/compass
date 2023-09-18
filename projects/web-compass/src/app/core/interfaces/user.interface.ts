@@ -20,6 +20,12 @@ export interface UserPermission {
   content_type: number
 }
 
-export interface UserGroups{
+export interface UserGroups {
 
+}
+
+export interface UserSession {
+  _auth_user_id: number,
+  _auth_user_backend: string,
+  _auth_user_hash: string
 }

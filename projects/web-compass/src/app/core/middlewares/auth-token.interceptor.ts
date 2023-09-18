@@ -1,7 +1,7 @@
-import { HttpEvent, HttpHandler, HttpHandlerFn, HttpRequest } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { selectAuthToken } from '../store/selectors/auth.selectors';
 import { StateWebCompass } from '../store';
 import { API_URL } from '../env/enviroment';

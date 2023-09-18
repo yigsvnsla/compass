@@ -40,9 +40,11 @@ export class HttpController {
    * the following properties:
    * @returns an Observable of type ApiResponse<K>.
   */
-  public read<K>(httpControllerArgs: HttpControllerArgFetch<K>): Observable<ApiResponse<K>> {
+  public read<ResponseType>(httpControllerArgs: Omit<HttpControllerArg<ResponseType>, 'queryParams' | 'pagination' | 'body'>): Observable<ApiResponse<ResponseType>>
+  public read<RequestType, ResponseType>(httpControllerArgs: HttpControllerArg<RequestType>): Observable<ApiResponse<ResponseType>>
+  public read<RequestType, ResponseType>(httpControllerArgs: HttpControllerArg<RequestType>): Observable<ApiResponse<ResponseType>> {
     return this._HttpClient
-      .get<ApiResponse<K>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`,
+      .get<ApiResponse<ResponseType>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`,
         {
           headers: this.headers,
           params: new HttpParams({ fromObject: { ...httpControllerArgs.pagination, ...httpControllerArgs.queryParams } }),
@@ -58,9 +60,9 @@ export class HttpController {
    * following properties:
    * @returns an Observable of type ApiResponse<K>.
   */
-  public create<K>(httpControllerArgs: HttpControllerArg<K>): Observable<ApiResponse<K>> {
+  public create<RequestType, ResponseType>(httpControllerArgs: HttpControllerArg<RequestType>): Observable<ApiResponse<ResponseType>> {
     return this._HttpClient
-      .post<ApiResponse<K>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`, httpControllerArgs.body,
+      .post<ApiResponse<ResponseType>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`, httpControllerArgs.body,
         {
           headers: this.headers,
           params: new HttpParams({ fromObject: { ...httpControllerArgs.pagination, ...httpControllerArgs.queryParams } }),
@@ -78,9 +80,9 @@ export class HttpController {
    * following properties:
    * @returns an Observable of type ApiResponse<K>.
   */
-  public update<K>(httpControllerArgs: HttpControllerArg<K>): Observable<ApiResponse<K>> {
+  public update<RequestType, ResponseType>(httpControllerArgs: HttpControllerArg<RequestType>): Observable<ApiResponse<ResponseType>> {
     return this._HttpClient
-      .put<ApiResponse<K>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`, httpControllerArgs.body,
+      .put<ApiResponse<ResponseType>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`, httpControllerArgs.body,
         {
           headers: this.headers,
           params: new HttpParams({ fromObject: { ...httpControllerArgs.pagination, ...httpControllerArgs.queryParams } }),
@@ -98,9 +100,9 @@ export class HttpController {
    * following properties:
    * @returns an Observable of type ApiResponse<K>.
   */
-  public delete<K>(httpControllerArgs: HttpControllerArg<K>): Observable<ApiResponse<K>> {
+  public delete<RequestType, ResponseType>(httpControllerArgs: HttpControllerArg<RequestType>): Observable<ApiResponse<ResponseType>> {
     return this._HttpClient
-      .delete<ApiResponse<K>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`,
+      .delete<ApiResponse<ResponseType>>(`${this.apiPath(httpControllerArgs.datasource)}/${httpControllerArgs.path}`,
         {
           headers: this.headers,
           params: new HttpParams({ fromObject: { ...httpControllerArgs.pagination, ...httpControllerArgs.queryParams } }),
