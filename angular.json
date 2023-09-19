@@ -39,12 +39,15 @@
             "tsConfig": "projects/web-compass/tsconfig.app.json",
             "assets": [
               "projects/web-compass/src/favicon.ico",
-              "projects/web-compass/src/assets"
+              "projects/web-compass/src/assets",
+              "projects/web-compass/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/web-compass/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "projects/web-compass/ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -101,7 +104,8 @@
             "tsConfig": "web-compass/tsconfig.spec.json",
             "assets": [
               "projects/web-compass/src/favicon.ico",
-              "projects/web-compass/src/assets"
+              "projects/web-compass/src/assets",
+              "projects/web-compass/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/web-compass/src/styles.css"

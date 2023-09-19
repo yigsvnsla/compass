@@ -9,18 +9,21 @@ import { UrlPatcherInterceptor } from './core/middlewares/url-patcher.intercepto
 import { provideEffects } from '@ngrx/effects';
 import * as effects from './core/store/effects/index';
 import { AuthTokenInterceptor } from './core/middlewares/auth-token.interceptor';
+import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideStore(reducers, { metaReducers }),
-    provideHttpClient(
-      withInterceptors([
+    provideHttpClient(withInterceptors([
         UrlPatcherInterceptor,
         AuthTokenInterceptor
-      ])
-    ),
+    ])),
     provideEffects(effects),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-  ]
+    provideServiceWorker('ngsw-worker.js', {
+        enabled: !isDevMode(),
+        registrationStrategy: 'registerWhenStable:30000'
+    })
+]
 };
