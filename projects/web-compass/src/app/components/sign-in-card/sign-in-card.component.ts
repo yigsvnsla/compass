@@ -21,20 +21,10 @@ import { selectAuthIsLoading } from '../../core/store/selectors/auth.selectors';
   ]
 })
 export class SignInCardComponent {
-
   private store: Store<StateWebCompass> = inject(Store<StateWebCompass>);
-
+  private formBuilder: FormBuilder = inject(FormBuilder);
 
   public isLoading = this.store.selectSignal(selectAuthIsLoading)
-
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-
-  }
-
-  private formBuilder: FormBuilder = inject(FormBuilder);
-  private _authService: AuthService = inject(AuthService);
 
   public formSignIn = this.formBuilder.nonNullable.group({
     username: [{ value: '', disabled: false }, [Validators.required]],
@@ -42,14 +32,7 @@ export class SignInCardComponent {
   });
 
   public onSubmit(): void {
-    // this.isLoading.update((loading) => !loading)
     this.store.dispatch(AuthActions.load(this.formSignIn.getRawValue()))
-    // this._authService
-    //   .singIn(this.formSignIn.getRawValue())
-    //   .subscribe({
-    //     // error: () => this.isLoading.update((loading) => !loading),
-    //     // complete: () => this.isLoading.update((loading) => !loading)
-    //   })
   }
 
   public get formControlUsername(): FormControl<string> {

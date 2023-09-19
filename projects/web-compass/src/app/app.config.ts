@@ -1,4 +1,4 @@
-import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
+import { APP_ID, ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { PreloadAllModules, provideRouter, withDebugTracing, withPreloading } from '@angular/router';
 import { provideStore } from '@ngrx/store'
 import { routes } from './app.routes';
@@ -24,6 +24,7 @@ export const appConfig: ApplicationConfig = {
     provideServiceWorker('ngsw-worker.js', {
         enabled: !isDevMode(),
         registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    { provide: APP_ID,  useValue: 'web-compass' }
 ]
 };
