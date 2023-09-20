@@ -9,3 +9,4 @@ export const ReducerAuth = createReducer(
   on(AuthApiActions.loadSuccess, (_state, state) => ({ ..._state, ...state, loading: false })),
   on(AuthApiActions.loadFailure, (_state) => ({ ..._state, loading: false })),
 );
+

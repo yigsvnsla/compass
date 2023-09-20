@@ -26,3 +26,12 @@ export interface HttpControllerArg<T> {
 }
 export type HttpControllerArgSender<T> = Omit<HttpControllerArg<T>, 'path'>
 export type HttpControllerArgFetch<T> = Omit<HttpControllerArg<T>, 'body'>
+
+export interface ApiErrorResponse {
+  timestamp: string,
+  status: number,
+  code: string,
+  message: string,
+  path: string,
+  errors: any[]
+}

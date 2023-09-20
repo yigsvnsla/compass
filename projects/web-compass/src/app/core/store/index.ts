@@ -2,13 +2,13 @@ import { isDevMode } from '@angular/core';
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { StateAuth } from './states/auth.state';
 import { ReducerAuth } from './reducers/auth.reducer';
-
+import { localStorageSyncReducer } from "./meta/meta-storage.reducer";
 export interface StateWebCompass {
-  ReducerAuth: StateAuth
+  stateAuth: StateAuth
 }
 
 export const reducers: ActionReducerMap<StateWebCompass> = {
-  ReducerAuth: ReducerAuth
+  stateAuth: ReducerAuth
 };
 
-export const metaReducers: MetaReducer<StateWebCompass>[] = isDevMode() ? [] : [];
+export const metaReducers: MetaReducer<StateWebCompass>[] = [localStorageSyncReducer];

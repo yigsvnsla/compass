@@ -89,6 +89,9 @@ dependencies:
   ionicons:
     specifier: ^7.1.2
     version: 7.1.2
+  ngrx-store-localstorage:
+    specifier: ^16.0.0
+    version: 16.0.0(@angular/common@16.2.5)(@angular/core@16.2.5)(@ngrx/store@16.2.0)
   rxjs:
     specifier: ~7.8.1
     version: 7.8.1
@@ -4072,6 +4075,11 @@ packages:
   /decimal.js@10.4.3:
     resolution: {integrity: sha512-VBBaLc1MgL5XpzgIP7ny5Z6Nx3UrRkIViUkPUdtl9aya5amy3De1gsUUSB1g3+3sExYNjCAsAznmukyxCb1GRA==}
 
+  /deepmerge@4.3.1:
+    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /default-gateway@6.0.3:
     resolution: {integrity: sha512-fwSOJsbbNzZ/CUFpqFBqYfYNLj1NbMPm8MMCIzHjC83iSJRBEGmDUxU+WP661BaBQImeC2yHwXtz+P/O9o+XEg==}
     engines: {node: '>= 10'}
@@ -6181,6 +6189,20 @@ packages:
   /neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
+
+  /ngrx-store-localstorage@16.0.0(@angular/common@16.2.5)(@angular/core@16.2.5)(@ngrx/store@16.2.0):
+    resolution: {integrity: sha512-2aySPLexpmcXVe2ms83z0AoAWWR4yj8gg3hE6GNC6g6HIxJ0GVlA8KdDA5je0BFO1a6ew5LEiq6/b+tFlIDKEQ==}
+    peerDependencies:
+      '@angular/common': ^16.0.0
+      '@angular/core': ^16.0.0
+      '@ngrx/store': ^16.0.0
+    dependencies:
+      '@angular/common': 16.2.5(@angular/core@16.2.5)(rxjs@7.8.1)
+      '@angular/core': 16.2.5(rxjs@7.8.1)(zone.js@0.13.3)
+      '@ngrx/store': 16.2.0(@angular/core@16.2.5)(rxjs@7.8.1)
+      deepmerge: 4.3.1
+      tslib: 2.6.2
+    dev: false
 
   /nice-napi@1.0.2:
     resolution: {integrity: sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA==}
