@@ -2,7 +2,7 @@ import { ApplicationRef, Injectable, inject } from '@angular/core';
 import { SwUpdate, VersionEvent, VersionReadyEvent } from '@angular/service-worker';
 import { concat, filter, first, interval } from 'rxjs';
 
-@Injectable()
+@Injectable({providedIn:'root'})
 export class SwService {
   private appRef: ApplicationRef = inject(ApplicationRef)
   private swUpdate: SwUpdate = inject(SwUpdate)
@@ -12,11 +12,11 @@ export class SwService {
    * checking for updates, prompting for updates, and handling unrecoverable states.
    */
   constructor() {
+    console.log('SW Service')
     if (!this.swUpdate.isEnabled) {
       console.log('pwa is no aviable')
       return
     };
-
     this.logUpdate()
     this.checkForUpdate()
     this.promptUpdate()
