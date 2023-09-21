@@ -1,29 +1,29 @@
 import { DATA_SOURCE } from "../enums/data-source.enum";
 import { AuthEnviroment } from "../interfaces/auth.interface";
 
-// export const API_ENV = {
-//   production: false,
-//   protocol: 'http' ,
-//   subDomain: "",
-//   domain: '192.168.100.65',
-//   port: 8000,
-//   gateway: '',
-//   dataSource: DATA_SOURCE,
-//   apiVersion: 'v1',
-//   prefix: 'api',
-// } as const
-
 export const API_ENV = {
   production: false,
-  protocol: 'https' ,
-  subDomain: undefined,
-  domain: 'pnslzvzk-8000.brs.devtunnels.ms',
-  port: undefined,
-  gateway: undefined,
+  protocol: 'http' ,
+  subDomain: "",
+  domain: '192.168.100.65',
+  port: 8000,
+  gateway: '',
   dataSource: DATA_SOURCE,
   apiVersion: 'v1',
   prefix: 'api',
 } as const
+
+// export const API_ENV = {
+//   production: false,
+//   protocol: 'https' ,
+//   subDomain: undefined,
+//   domain: 'pnslzvzk-8000.brs.devtunnels.ms',
+//   port: undefined,
+//   gateway: undefined,
+//   dataSource: DATA_SOURCE,
+//   apiVersion: 'v1',
+//   prefix: 'api',
+// } as const
 
 export const AUTH_CLIENT_ENV : AuthEnviroment = {
   client_id: '403f407cfabfcc85caa7',

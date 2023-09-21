@@ -12,7 +12,7 @@ export const AuthActions = createActionGroup({
 export const AuthApiActions = createActionGroup({
   source: 'Auth API',
   events: {
-    'Load Success': props<AuthSignined & AuthCredentials>(),
+    'Load Success': props<Omit<AuthSignined, 'scope'> & Pick<AuthCredentials, 'username'>>(),
     'Load Failure': props<{ error: unknown }>(),
   }
 });

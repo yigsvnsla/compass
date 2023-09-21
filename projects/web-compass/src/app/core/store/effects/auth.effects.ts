@@ -12,10 +12,10 @@ export const LoadAuthEffect = createEffect(
       .pipe(
         ofType(AuthActions.load),
         exhaustMap(
-          (effectCredentials) => authService
-            .singIn(effectCredentials)
+          ({ password, username }) => authService
+            .singIn({ password, username })
             .pipe(
-              map((response) => AuthApiActions.loadSuccess({ ...response.data, ...effectCredentials })),
+              map(({ data: { access_token, expires_in, token_type } }) => AuthApiActions.loadSuccess({ access_token, expires_in, token_type, username })),
               catchError((error: { message: string }) => of(AuthApiActions.loadFailure({ error: error.message })))
             )
         )
