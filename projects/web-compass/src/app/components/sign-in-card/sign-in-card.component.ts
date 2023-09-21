@@ -26,10 +26,14 @@ export class SignInCardComponent {
 
   public isLoading = this.store.selectSignal(selectAuthIsLoading)
 
+
   public formSignIn = this.formBuilder.nonNullable.group({
     username: [{ value: '', disabled: false }, [Validators.required]],
     password: [{ value: '', disabled: false }, [Validators.required]]
   });
+
+  public ngOnInit(): void {
+  }
 
   public onSubmit(): void {
     this.store.dispatch(AuthActions.load(this.formSignIn.getRawValue()))
