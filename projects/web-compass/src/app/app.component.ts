@@ -9,7 +9,11 @@ import { DarkModeService } from './core/services/dark-mode.service';
 @Component({
   selector: 'web-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    DrawerMenuComponent,
+    NavbarComponent
+  ],
   providers: [],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

@@ -1,5 +1,5 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { NgClass, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -21,19 +21,16 @@ import { selectAuthIsLoading } from '../../core/store/selectors/auth.selectors';
   ]
 })
 export class SignInCardComponent {
-  private store: Store<StateWebCompass> = inject(Store<StateWebCompass>);
   private formBuilder: FormBuilder = inject(FormBuilder);
+  private store: Store<StateWebCompass> = inject(Store<StateWebCompass>);
+
 
   public isLoading = this.store.selectSignal(selectAuthIsLoading)
-
 
   public formSignIn = this.formBuilder.nonNullable.group({
     username: [{ value: '', disabled: false }, [Validators.required]],
     password: [{ value: '', disabled: false }, [Validators.required]]
   });
-
-  public ngOnInit(): void {
-  }
 
   public onSubmit(): void {
     this.store.dispatch(AuthActions.load(this.formSignIn.getRawValue()))
@@ -49,16 +46,20 @@ export class SignInCardComponent {
 
   public get formControlUsernameStyleState() {
     return {
-      'input-error': this.formControlUsername.invalid && this.formControlUsername.touched,
-      'input-success': this.formControlUsername.valid && this.formControlUsername.touched
+      'input-error': (this.formControlUsername.invalid && this.formControlUsername.touched),
+      'input-success': (this.formControlUsername.valid && this.formControlUsername.touched)
     }
   }
 
   public get formControlPasswordStyleState() {
     return {
-      'input-error': this.formControlPassword.invalid && this.formControlPassword.touched,
-      'input-success': this.formControlPassword.valid && this.formControlPassword.touched
+      'input-error': (this.formControlPassword.invalid && this.formControlPassword.touched),
+      'input-success': (this.formControlPassword.valid && this.formControlPassword.touched)
     }
+  }
+
+  public formControlRequireState(abstractControl: FormControl) {
+    return (abstractControl.getError('required') && (abstractControl.touched || abstractControl.dirty))
   }
 
 }
