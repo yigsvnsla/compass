@@ -20,6 +20,5 @@
     "johnpapa.angular2",
     "cyrilletuzi.angular-schematics",
     "mikestead.dotenv",
-    "rangav.vscode-thunder-client",
   ]
 }

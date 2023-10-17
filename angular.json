@@ -4,7 +4,10 @@
   "newProjectRoot": ".",
   "cli": {
     "analytics": false,
-    "packageManager": "pnpm"
+    "packageManager": "pnpm",
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   },
   "projects": {
     "web-compass": {
@@ -27,7 +30,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/web-compass",
+            "outputPath": "dist/web-compass/browser",
             "index": "projects/web-compass/src/index.html",
             "main": "projects/web-compass/src/main.ts",
             "polyfills": [
@@ -36,12 +39,15 @@
             "tsConfig": "projects/web-compass/tsconfig.app.json",
             "assets": [
               "projects/web-compass/src/favicon.ico",
-              "projects/web-compass/src/assets"
+              "projects/web-compass/src/assets",
+              "projects/web-compass/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/web-compass/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "projects/web-compass/ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -98,13 +104,85 @@
             "tsConfig": "web-compass/tsconfig.spec.json",
             "assets": [
               "projects/web-compass/src/favicon.ico",
-              "projects/web-compass/src/assets"
+              "projects/web-compass/src/assets",
+              "projects/web-compass/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/web-compass/src/styles.css"
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/web-compass/server",
+            "main": "projects/web-compass/server.ts",
+            "tsConfig": "projects/web-compass/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "route": "shell"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web-compass:build:production",
+              "serverTarget": "web-compass:server:production"
+            },
+            "development": {
+              "browserTarget": "web-compass:build:development",
+              "serverTarget": "web-compass:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "web-compass:build:development",
+              "serverTarget": "web-compass:server:development"
+            },
+            "production": {
+              "browserTarget": "web-compass:build:production",
+              "serverTarget": "web-compass:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web-compass:build:production",
+              "serverTarget": "web-compass:server:production"
+            },
+            "development": {
+              "browserTarget": "web-compass:build:development",
+              "serverTarget": "web-compass:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     },
