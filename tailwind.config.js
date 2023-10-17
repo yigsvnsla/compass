@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
-    // "projects/web-compass/src/**/*.{html,ts}"
     './projects/**/src/**/*.{html,ts}'
   ],
   theme: {
