@@ -1,0 +1,14 @@
+<div [ngClass]="(this.indexFromRef == 0) ? 'bg-blue-700' : (this.indexFromRef == 1 ) ? 'bg-green-700' : (this.indexFromRef == 2) ? 'bg-amber-600' : 'bg-purple-700'" class="card w-64  text-primary-content overflow-hidden border-2 border-black border-opacity-5">
+  <div class="card-body p-2 bg-[url('/assets/svg/wave.svg')] bg-no-repeat bg-bottom">
+    <div class="justify-end px-2">
+      <div class="flex items-center">
+        <p class="text-lg select-none font-semibold">{{this.refRevenue.title | titlecase}}</p>
+        <ng-content #icon></ng-content>
+      </div>
+      <h2 class="text-4xl px-2 font-bold drop-shadow-lg ">{{this.refRevenue.value | currency:'USD':'symbol':'1.0-0'}}</h2>
+    </div>
+    <div class="card-actions justify-end">
+      <button [ngClass]="(this.indexFromRef == 0) ? 'hover:bg-blue-800' : (this.indexFromRef == 1 ) ? 'hover:bg-green-700' : (this.indexFromRef == 2) ? 'hover:bg-amber-600' : 'hover:bg-purple-700'" class="btn btn-xs border-none capitalize bg-opacity-0 text-white">Details</button>
+    </div>
+  </div>
+</div>

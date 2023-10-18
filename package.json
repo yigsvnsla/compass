@@ -102,6 +102,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.4.30",
     "tailwindcss": "^3.3.3",
+    "tailwindcss-animated": "^1.0.1",
     "typescript": "~5.1.6"
   }
 }

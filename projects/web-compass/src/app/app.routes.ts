@@ -10,7 +10,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./layouts/dashboard/dashboard.routes').then((r) => r.routesDashboard),
-    canActivate:[retrivePermissionsGuardCanActivate]
+    // canActivate:[retrivePermissionsGuardCanActivate]
   },
   {
     path: 'signin',

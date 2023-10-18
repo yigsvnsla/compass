@@ -1,75 +1,15 @@
+
+<!-- round progress -->
+<section class="flex gap-3 justify-center py-3">
+  <web-card-resume-revenue [indexFromRef]="index" [refRevenue]="i" *ngFor="let i of this.resumeRevenue let index = index">
+    <svg slot="icon" class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"/>
+    </svg>
+  </web-card-resume-revenue>
+</section>
+
+<!-- charts progress -->
 <section class="grid grid-flow-col grid-cols-2 items-center">
-  <!-- round progress -->
-  <div class="grid grid-cols-2 gap-4 p-2">
-
-    <!-- title round progress -->
-    <div class="col-span-full">
-      <h1 class="text-5xl font-bold">Box Office News!</h1>
-      <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.
-        In deleniti eaque aut repudiandae et a id nisi.</p>
-    </div>
-
-    <div class="active:scale-105 transition-all ">
-      <div class="card card-compact p-2 bg-base-100 shadow-md select-none">
-        <div class="text-left p-2">
-          <h2 class="font-bold">Conectados</h2>
-        </div>
-        <figure>
-          <div class="radial-progress absolute z-0 text-gray-800 opacity-10 dark:opacity-50 " style="--value:100;"></div>
-          <div class="radial-progress text-success drop-shadow-md dark:drop-shadow-[0_1px_4px_hsl(var(--su))]" style="--value:70;">70%</div>
-        </figure>
-        <div class="text-right p-2">
-          <h2 class="font-bold text-xs">Total: 123123</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="active:scale-105 transition-all ">
-      <div class="card card-compact p-2 bg-base-100 shadow-md select-none">
-        <div class="text-left p-2">
-          <h2 class="font-bold">Bloqueados</h2>
-        </div>
-        <figure>
-          <div class="radial-progress absolute z-0 text-gray-800 opacity-10 dark:opacity-50" style="--value:100;"></div>
-          <div class="radial-progress text-error drop-shadow-md dark:drop-shadow-[0_1px_4px_hsl(var(--er))]" style="--value:20;">20%</div>
-        </figure>
-        <div class="text-right  p-2 ">
-          <h2 class="font-bold text-xs">Total: 123123</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="active:scale-105 transition-all ">
-      <div class="card card-compact p-2 bg-base-100 shadow-md select-none">
-        <div class="text-left p-2">
-          <h2 class="font-bold">Activos</h2>
-        </div>
-        <figure>
-          <div class="radial-progress absolute z-0 text-gray-800 opacity-10 dark:opacity-50 " style="--value:100;"></div>
-          <div class="radial-progress text-info drop-shadow-md dark:drop-shadow-[0_1px_4px_hsl(var(--in))]" style="--value:20;">20%</div>
-        </figure>
-        <div class="text-right  p-2 ">
-          <h2 class="font-bold text-xs">Total: 123123</h2>
-        </div>
-      </div>
-    </div>
-    <div class="active:scale-105 transition-all ">
-      <div class="card card-compact p-2 bg-base-100 shadow-md select-none">
-        <div class="text-left p-2">
-          <h2 class="font-bold">Bloqueados</h2>
-        </div>
-        <figure>
-          <div class="radial-progress absolute z-0 text-gray-800 opacity-10 dark:opacity-50 " style="--value:100;"></div>
-          <div class="radial-progress text-warning drop-shadow-md dark:drop-shadow-[0_1px_4px_hsl(var(--wa))]" style="--value:70;">70%</div>
-        </figure>
-        <div class="text-right  p-2 ">
-          <h2 class="font-bold text-xs">Total: 123123</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- charts progress -->
   <section class="p-2">
     <div class="card bg-base-100 shadow-md">
       <div class="card-body ">
@@ -119,7 +59,6 @@
               <div class="text-sm text-gray-500">Bounce Rate</div>
             </div>
           </div>
-          <!-- Chart built with Chart.js 3 -->
           <div style="position: relative; width:100%" class="row-span-1 col-span-full chart-container">
             <canvas id="analytics-card">{{this.charts}}</canvas>
           </div>

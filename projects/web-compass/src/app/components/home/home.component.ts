@@ -1,21 +1,50 @@
-import { Component, Renderer2, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Renderer2, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
+import { CardResumeRevenueComponent } from '../card-resume-revenue/card-resume-revenue.component';
 @Component({
   selector: 'web-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardResumeRevenueComponent],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  // changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
+
 
   public readonly circumference: number = (50 * 2 * Math.PI);
   public readonly percent: number = 80;
   public readonly strokeCircumference: number = this.circumference - this.percent / 100 * this.circumference;
 
   private renderer2: Renderer2 = inject(Renderer2)
+
+  public get resumeRevenue() {
+    return [
+      {
+        title: 'this month revenue',
+        value: Math.floor(Math.random() * 20000)
+      },
+      {
+        title: 'today earning',
+        value: Math.floor(Math.random() * 2000)
+      },
+      {
+        title: 'today orders',
+        value: Math.floor(Math.random() * 500)
+      },
+      {
+        title: 'products sold',
+        value: Math.floor(Math.random() * 500)
+      },
+      {
+        title: 'products sold',
+        value: Math.floor(Math.random() * 500)
+      }
+    ]
+  }
+
 
   public _charts: Chart | undefined;
 
@@ -132,7 +161,7 @@ export class HomeComponent {
 
 
   ngOnInit(): void {
-    this.charts = this.renderer2.selectRootElement('#analytics-card', true)
+    // this.charts = this.renderer2.selectRootElement('#analytics-card', true)
   }
 
 }
