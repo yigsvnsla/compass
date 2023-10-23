@@ -6,7 +6,6 @@ export const routesDashboard: Routes = [
     pathMatch: 'full',
     loadComponent: () => import('./dashboard.component').then(c => c.DashboardComponent),
     data: {
-
     },
     children: [
       {
