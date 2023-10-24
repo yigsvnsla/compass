@@ -13,6 +13,7 @@ import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideStore(reducers, { metaReducers }),
     provideHttpClient(withInterceptors([
         UrlPatcherInterceptor,

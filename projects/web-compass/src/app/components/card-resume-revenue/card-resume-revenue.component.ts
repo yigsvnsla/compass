@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule, CurrencyPipe, NgClass, TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -6,7 +6,7 @@ import { CommonModule, CurrencyPipe, NgClass, TitleCasePipe } from '@angular/com
   standalone: true,
   imports: [NgClass, TitleCasePipe, CurrencyPipe],
   templateUrl: './card-resume-revenue.component.html',
-  styleUrls: ['./card-resume-revenue.component.css']
+  styleUrls: ['./card-resume-revenue.component.css'],
 })
 export class CardResumeRevenueComponent {
   @Input()
