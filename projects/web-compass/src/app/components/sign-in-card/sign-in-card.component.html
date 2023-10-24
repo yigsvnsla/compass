@@ -1,7 +1,7 @@
-<div id="ref" class="p-8 sm:max-w-xl shadow-xl rounded-lg mx-auto">
+<div id="ref" class="p-8 sm:max-w-xl shadow-xl rounded-lg mx-auto bg-base-100">
   <!-- branding -->
   <a href="#" class="font-semibold text-xl items-center inline-flex mb-4 ">
-    <img class="w-8 h-8 mr-2" src="../../../assets/svg/compass-icon.svg" alt="">
+    <img class="h-8 w-8 animate-wiggle-more animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-alternate-reverse animate-fill-backwards mr-2" src="../../../assets/svg/compass-icon.svg" alt="">
     <span>Compass</span>
   </a>
   <!-- title -->
@@ -53,10 +53,10 @@
           <input type="checkbox" name="remember" id="remember" aria-describedby="remember" class="bg-gray-50 dark:bg-gray-700 border border-gray-300 border-l rounded-md w-4 h-4 dark:border-gray-600 ">
         </div>
         <div class="ml-3 text-sm h-5">
-          <label for="remember" class="text-gray-600 dark:text-gray-300">Remember me</label>
+          <label for="remember" class="">Remember me</label>
         </div>
       </div>
-      <a href="#" class="dark:text-gray-400 text-gray-500 font-medium text-sm hover:underline underline-offset-4">Forgot password?</a>
+      <a href="#" class=" font-medium text-sm hover:underline underline-offset-4">Forgot password?</a>
     </div>
     <!-- btn login -->
     <button [disabled]="this.formSignIn.invalid" (click)="this.onSubmit()" class="btn btn-primary btn-block m-auto">

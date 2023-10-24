@@ -11,9 +11,9 @@ import { BackButtonDirective } from '../../core/directives/back-button.directive
   styleUrls: ['./not-found.component.css']
 })
 export class NotFoundComponent {
-  private location: Location = inject(Location)
+  // private location: Location = inject(Location)
 
-  public goToBack(){
-    this.location.back()
-  }
+  // public goToBack(){
+  //   this.location.back()
+  // }
 }
