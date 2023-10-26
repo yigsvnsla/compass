@@ -1,0 +1,9 @@
+<div (click)="onDropdownClick($event)"  class="relative inline-block dropdown-end" >
+  <div (click)="toggleDropdown($event)">
+    <ng-content select="[dropdown-button]"></ng-content>
+  </div>
+  <!-- <input type="checkbox" [checked]="this.dropDownState()" (change)="toggleDropdown($event)" name="dropdown-list" id="dropdown-list" class="peer hidden "> -->
+  <div [ngClass]="classStyles" class="transition ease-out duration-200 origin-top scale-95 transform-gpu  dropdown-content absolute card compact z-[1] shadow bg-base-100 rounded-box w-96 overflow-hidden p-0">
+    <ng-content select="[dropdown-content]"/>
+  </div>
+</div>

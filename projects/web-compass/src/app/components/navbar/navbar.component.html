@@ -7,7 +7,10 @@
       </svg>
     </label>
   </div>
-  <div class="flex-1 px-2 mx-2">Navbar Title</div>
+  <div class="flex-1 px-2 mx-2">
+    <img class="h-8 w-8 animate-wiggle-more animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-alternate-reverse animate-fill-backwards" src="../../../assets/svg/compass-icon.svg" alt="Logo compass">
+    <h3 class="ml-2 font-semibold">Compass</h3>
+  </div>
   <div class="flex-none hidden lg:block">
     <ul class="menu menu-horizontal">
       <!-- Navbar menu content here -->
@@ -18,12 +21,110 @@
   <button class="btn btn-ghost btn-circle">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
   </button>
-  <button class="btn btn-ghost btn-circle">
-    <div class="indicator">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-      <span class="badge badge-xs badge-primary indicator-item animate-pulse"></span>
+
+  <web-dropdown>
+    <label dropdown-button class="btn btn-ghost btn-circle">
+      <div class="indicator" >
+        <svg  xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+        <span class="badge badge-xs badge-primary indicator-item animate-pulse"></span>
+      </div>
+    </label>
+    <div dropdown-content class="card-body overflow-y-scroll !px-0 !pt-0 !pb-4">
+      <h2 class="card-title justify-between p-6 !pb-0 z-[1]">
+        <span>Notifications</span>
+        <div class="flex gap-2 items-center">
+          <button class="btn btn-xs btn-active btn-primary">Read</button>
+          <button class="btn btn-xs btn-active btn-ghost">Unread</button>
+          <details class="dropdown flex items-center">
+            <summary class="m-1 btn btn-xs bg-transparent">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+              </svg>
+            </summary>
+            <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <li><a>Item 1</a></li>
+              <li><a>Item 2</a></li>
+            </ul>
+          </details>
+        </div>
+      </h2>
+      <ul class="menu menu-lg max-h-[1840px] h-[365px] flex-nowrap">
+        <li *ngFor="let n of [0,1,2,3,4,5,6,7,8,9]" class="last:pb-4">
+          <a href="#" class="flex px-4 py-3 hover:bg-base-300 ">
+            <div class="flex-shrink-0">
+              <img class="rounded-full w-11 h-11" src="https://scontent.fgye26-1.fna.fbcdn.net/v/t39.30808-6/339000488_236225328809612_3628851675944660610_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHwzelJ0Mp-Z9p6nsx7pIWweDqoeCVQmjF4Oqh4JVCaMbnxRu00HtVC7pdH7iZLwuVKVK2l2vEpCJlsWJow3dvT&_nc_ohc=PersXGRrtFAAX-gQcYS&_nc_ht=scontent.fgye26-1.fna&oh=00_AfCTcKmu3XTev9mCTAMgBZga7VKmX7Yk48Pa90Qbdc1BBQ&oe=653CA7C0" alt="Jese image">
+              <div class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-blue-600 border border-white rounded-full dark:border-gray-800">
+                <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                  <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z"/>
+                  <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="w-full pl-3">
+              <div class=" text-sm mb-1.5 ">
+                New message from
+                <span class="font-semibold ">Jese Leos</span>
+                : "Hey, what's up? All set for the presentation?"
+              </div>
+              <div class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</div>
+            </div>
+          </a>
+        </li>
+      </ul>
     </div>
-  </button>
+  </web-dropdown>
+
+  <web-dropdown>
+    <label dropdown-button tabindex="0" class="btn btn-ghost btn-circle avatar">
+      <div class="w-10 rounded-full">
+        <img src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper.png" />
+      </div>
+    </label>
+    <div dropdown-content class="card-body overflow-y-scroll !px-0 !pt-0 !pb-4">
+      <h2 class="card-title justify-between p-6 !pb-0 z-[1]">
+        <span>Notifications</span>
+        <div class="flex gap-2 items-center">
+          <button class="btn btn-xs btn-active btn-primary">Read</button>
+          <button class="btn btn-xs btn-active btn-ghost">Unread</button>
+          <details class="dropdown flex items-center">
+            <summary class="m-1 btn btn-xs bg-transparent">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+              </svg>
+            </summary>
+            <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <li><a>Item 1</a></li>
+              <li><a>Item 2</a></li>
+            </ul>
+          </details>
+        </div>
+      </h2>
+      <ul class="menu menu-lg max-h-[1840px] h-[365px] flex-nowrap">
+        <li *ngFor="let n of [0,1,2,3,4,5,6,7,8,9]" class="last:pb-4">
+          <a href="#" class="flex px-4 py-3 hover:bg-base-300 ">
+            <div class="flex-shrink-0">
+              <img class="rounded-full w-11 h-11" src="https://scontent.fgye26-1.fna.fbcdn.net/v/t39.30808-6/339000488_236225328809612_3628851675944660610_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHwzelJ0Mp-Z9p6nsx7pIWweDqoeCVQmjF4Oqh4JVCaMbnxRu00HtVC7pdH7iZLwuVKVK2l2vEpCJlsWJow3dvT&_nc_ohc=PersXGRrtFAAX-gQcYS&_nc_ht=scontent.fgye26-1.fna&oh=00_AfCTcKmu3XTev9mCTAMgBZga7VKmX7Yk48Pa90Qbdc1BBQ&oe=653CA7C0" alt="Jese image">
+              <div class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-blue-600 border border-white rounded-full dark:border-gray-800">
+                <svg class="w-2 h-2 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                  <path d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z"/>
+                  <path d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="w-full pl-3">
+              <div class=" text-sm mb-1.5 ">
+                New message from
+                <span class="font-semibold ">Jese Leos</span>
+                : "Hey, what's up? All set for the presentation?"
+              </div>
+              <div class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </web-dropdown>
+
   <div class="dropdown dropdown-end">
     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
       <div class="w-10 rounded-full">
@@ -33,7 +134,7 @@
     <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
       <li>
         <a class="justify-between">
-          Profile
+          <span>Profile</span>
           <span class="badge">New</span>
         </a>
       </li>

@@ -1,15 +1,18 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { CommonModule, NgClass, NgFor } from '@angular/common';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, signal } from '@angular/core';
+import { DropdownComponent } from '../common/dropdown/dropdown.component';
 
 @Component({
   selector: 'web-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgFor, NgClass, DropdownComponent],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void { }
+
 }
