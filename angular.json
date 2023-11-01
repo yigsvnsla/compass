@@ -30,12 +30,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["ngrx-store-localstorage"],
             "outputPath": "dist/web-compass/browser",
             "index": "projects/web-compass/src/index.html",
             "main": "projects/web-compass/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/web-compass/tsconfig.app.json",
             "assets": [
               "projects/web-compass/src/favicon.ico",
